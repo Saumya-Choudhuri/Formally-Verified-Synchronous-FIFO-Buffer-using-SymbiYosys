@@ -144,7 +144,15 @@
 
     writeButton.addEventListener('click', () => {
       const value = valueInput.value.trim();
-      if (!value || buffer.length === capacity) return;
+      if (!value) {
+        status.textContent = 'Enter a word before writing.';
+        valueInput.focus();
+        return;
+      }
+      if (buffer.length === capacity) {
+        status.textContent = 'Write blocked: buffer is full.';
+        return;
+      }
       buffer.push(value);
       valueInput.value = '';
       status.textContent = `Wrote ${value} on the clock edge.`;
@@ -152,7 +160,10 @@
     });
 
     readButton.addEventListener('click', () => {
-      if (buffer.length === 0) return;
+      if (buffer.length === 0) {
+        status.textContent = 'Read blocked: buffer is empty.';
+        return;
+      }
       const value = buffer.shift();
       status.textContent = `Read ${value} on the clock edge.`;
       render();
