@@ -193,6 +193,10 @@
       render();
     });
 
+    valueInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') writeButton.click();
+    });
+
     render();
   </script>
 </body>
