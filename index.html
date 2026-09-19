@@ -48,6 +48,8 @@
     button.secondary { background: transparent; color: var(--accent-strong); }
     button:disabled { cursor: not-allowed; opacity: 0.45; }
     .status { min-height: 24px; margin: 18px 0 0; color: var(--accent-strong); font-size: 0.92rem; }
+    .events { display: grid; gap: 6px; margin: 20px 0 0; padding: 0; list-style: none; color: var(--muted); font: 0.78rem/1.4 Arial, sans-serif; }
+    .events li { border-top: 1px solid var(--line); padding-top: 6px; }
     .updates { margin-top: 36px; color: var(--muted); font: 0.75rem Arial, sans-serif; }
     @media (max-width: 720px) { main { width: min(100% - 28px, 560px); padding: 32px 0; } .workspace { grid-template-columns: 1fr; } }
   </style>
@@ -75,6 +77,7 @@
           <button id="reset" class="secondary" type="button">Reset buffer</button>
         </div>
         <p class="status" id="status" role="status">Ready for a clock edge.</p>
+        <ol class="events" id="events" aria-label="Recent clock events"></ol>
       </aside>
     </section>
     <p class="updates">Synchronous FIFO reference interface · wr_en, rd_en, full, empty</p>
@@ -128,6 +131,8 @@
     const writeButton = document.querySelector('#write');
     const readButton = document.querySelector('#read');
     const resetButton = document.querySelector('#reset');
+    const events = document.querySelector('#events');
+    const eventHistory = [];
 
     function render() {
       queue.replaceChildren();
@@ -140,6 +145,15 @@
       }
       writeButton.disabled = buffer.length === capacity;
       readButton.disabled = buffer.length === 0;
+    }
+
+    function recordEvent(message) {
+      eventHistory.unshift(message);
+      events.replaceChildren(...eventHistory.slice(0, 4).map((entry) => {
+        const item = document.createElement('li');
+        item.textContent = entry;
+        return item;
+      }));
     }
 
     writeButton.addEventListener('click', () => {
