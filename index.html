@@ -124,6 +124,7 @@
     const buffer = [];
     const queue = document.querySelector('#queue');
     const status = document.querySelector('#status');
+    const valueInput = document.querySelector('#value');
     const writeButton = document.querySelector('#write');
     const readButton = document.querySelector('#read');
 
@@ -139,6 +140,15 @@
       writeButton.disabled = buffer.length === capacity;
       readButton.disabled = buffer.length === 0;
     }
+
+    writeButton.addEventListener('click', () => {
+      const value = valueInput.value.trim();
+      if (!value || buffer.length === capacity) return;
+      buffer.push(value);
+      valueInput.value = '';
+      status.textContent = `Wrote ${value} on the clock edge.`;
+      render();
+    });
 
     render();
   </script>
