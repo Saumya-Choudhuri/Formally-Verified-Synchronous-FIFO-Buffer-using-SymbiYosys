@@ -127,6 +127,7 @@
     const valueInput = document.querySelector('#value');
     const writeButton = document.querySelector('#write');
     const readButton = document.querySelector('#read');
+    const resetButton = document.querySelector('#reset');
 
     function render() {
       queue.replaceChildren();
@@ -154,6 +155,13 @@
       if (buffer.length === 0) return;
       const value = buffer.shift();
       status.textContent = `Read ${value} on the clock edge.`;
+      render();
+    });
+
+    resetButton.addEventListener('click', () => {
+      buffer.length = 0;
+      valueInput.value = '';
+      status.textContent = 'Buffer reset on the clock edge.';
       render();
     });
 
