@@ -170,6 +170,7 @@
       buffer.push(value);
       valueInput.value = '';
       status.textContent = `Wrote ${value} on the clock edge.`;
+      recordEvent(`WRITE  ${value}  -> depth ${buffer.length}/${capacity}`);
       render();
     });
 
@@ -180,6 +181,7 @@
       }
       const value = buffer.shift();
       status.textContent = `Read ${value} on the clock edge.`;
+      recordEvent(`READ   ${value}  -> depth ${buffer.length}/${capacity}`);
       render();
     });
 
@@ -187,6 +189,7 @@
       buffer.length = 0;
       valueInput.value = '';
       status.textContent = 'Buffer reset on the clock edge.';
+      recordEvent('RESET  -> depth 0/4');
       render();
     });
 
