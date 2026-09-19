@@ -119,5 +119,28 @@
   <p>Update 38</p>
   <p>Update 39</p>
   <p>Update 40</p>
+  <script>
+    const capacity = 4;
+    const buffer = [];
+    const queue = document.querySelector('#queue');
+    const status = document.querySelector('#status');
+    const writeButton = document.querySelector('#write');
+    const readButton = document.querySelector('#read');
+
+    function render() {
+      queue.replaceChildren();
+      for (let index = 0; index < capacity; index += 1) {
+        const slot = document.createElement('div');
+        slot.className = 'slot';
+        slot.textContent = buffer[index] ?? 'empty';
+        if (buffer[index] !== undefined) slot.classList.add('filled');
+        queue.append(slot);
+      }
+      writeButton.disabled = buffer.length === capacity;
+      readButton.disabled = buffer.length === 0;
+    }
+
+    render();
+  </script>
 </body>
 </html>
