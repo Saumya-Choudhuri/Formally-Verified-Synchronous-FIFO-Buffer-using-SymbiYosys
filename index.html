@@ -150,6 +150,13 @@
       render();
     });
 
+    readButton.addEventListener('click', () => {
+      if (buffer.length === 0) return;
+      const value = buffer.shift();
+      status.textContent = `Read ${value} on the clock edge.`;
+      render();
+    });
+
     render();
   </script>
 </body>
