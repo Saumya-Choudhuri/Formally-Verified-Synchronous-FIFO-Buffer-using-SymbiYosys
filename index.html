@@ -49,6 +49,7 @@
     button.secondary { background: transparent; color: var(--accent-strong); }
     button:disabled { cursor: not-allowed; opacity: 0.45; }
     .status { min-height: 24px; margin: 18px 0 0; color: var(--accent-strong); font-size: 0.92rem; }
+    .status.error { color: var(--danger); }
     .events { display: grid; gap: 6px; margin: 20px 0 0; padding: 0; list-style: none; color: var(--muted); font: 0.78rem/1.4 Arial, sans-serif; }
     .events li { border-top: 1px solid var(--line); padding-top: 6px; }
     .updates { margin-top: 36px; color: var(--muted); font: 0.75rem Arial, sans-serif; }
@@ -98,8 +99,14 @@
     const eventHistory = [];
 
     function announce(message) {
+      status.classList.remove('error');
       status.textContent = message;
       recordEvent(message);
+    }
+
+    function warn(message) {
+      status.classList.add('error');
+      status.textContent = message;
     }
 
     function render() {
@@ -128,12 +135,12 @@
     writeButton.addEventListener('click', () => {
       const value = valueInput.value.trim();
       if (!value) {
-        status.textContent = 'Enter a word before writing.';
+        warn('Enter a word before writing.');
         valueInput.focus();
         return;
       }
       if (buffer.length === capacity) {
-        status.textContent = 'Write blocked: buffer is full.';
+        warn('Write blocked: buffer is full.');
         return;
       }
       buffer.push(value);
@@ -144,7 +151,7 @@
 
     readButton.addEventListener('click', () => {
       if (buffer.length === 0) {
-        status.textContent = 'Read blocked: buffer is empty.';
+        warn('Read blocked: buffer is empty.');
         return;
       }
       const value = buffer.shift();
