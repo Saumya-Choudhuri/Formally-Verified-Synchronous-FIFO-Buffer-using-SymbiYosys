@@ -101,7 +101,7 @@
     function announce(message) {
       status.classList.remove('error');
       status.textContent = message;
-      recordEvent(message);
+      recordEvent(`${message}  ·  depth ${buffer.length}/${capacity}`);
     }
 
     function warn(message) {
@@ -162,8 +162,7 @@
     resetButton.addEventListener('click', () => {
       buffer.length = 0;
       valueInput.value = '';
-      status.textContent = 'Buffer reset on the clock edge.';
-      recordEvent('RESET  -> depth 0/4');
+      announce('Buffer reset on the clock edge.');
       render();
     });
 
