@@ -38,6 +38,7 @@
     .capacity { color: var(--muted); font: 0.8rem Arial, sans-serif; }
     .queue { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; min-height: 112px; }
     .slot { display: grid; place-items: center; min-height: 92px; border: 1px dashed var(--line); border-radius: 6px; color: var(--muted); font: 700 1.4rem Arial, sans-serif; }
+    .slot::before { content: attr(aria-label); position: absolute; margin-top: -64px; font-size: 0.65rem; font-weight: 400; color: var(--muted); }
     .slot.filled { border-style: solid; border-color: var(--accent); background: var(--panel-soft); color: var(--accent-strong); }
     .slot:first-child.filled { box-shadow: inset 0 -3px 0 var(--accent); }
     .queue-note { margin: 16px 0 0; color: var(--muted); font-size: 0.92rem; }
