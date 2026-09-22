@@ -72,9 +72,9 @@
         <h2>Clock controls</h2>
         <div class="controls">
           <label for="value">Write data <input id="value" maxlength="8" placeholder="e.g. 0x2A"></label>
-          <button id="write" type="button">Write on next clock</button>
-          <button id="read" class="secondary" type="button">Read on next clock</button>
-          <button id="reset" class="secondary" type="button">Reset buffer</button>
+          <button id="write" type="button" aria-label="Write input data on the next clock edge">Write on next clock</button>
+          <button id="read" class="secondary" type="button" aria-label="Read the oldest item on the next clock edge">Read on next clock</button>
+          <button id="reset" class="secondary" type="button" aria-label="Reset the FIFO buffer">Reset buffer</button>
         </div>
         <p class="status" id="status" role="status">Ready for a clock edge.</p>
         <ol class="events" id="events" aria-label="Recent clock events"></ol>
