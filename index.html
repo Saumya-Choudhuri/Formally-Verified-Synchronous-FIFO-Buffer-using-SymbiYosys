@@ -97,6 +97,11 @@
     const events = document.querySelector('#events');
     const eventHistory = [];
 
+    function announce(message) {
+      status.textContent = message;
+      recordEvent(message);
+    }
+
     function render() {
       queue.replaceChildren();
       for (let index = 0; index < capacity; index += 1) {
@@ -133,8 +138,7 @@
       }
       buffer.push(value);
       valueInput.value = '';
-      status.textContent = `Wrote ${value} on the clock edge.`;
-      recordEvent(`WRITE  ${value}  -> depth ${buffer.length}/${capacity}`);
+      announce(`Wrote ${value} on the clock edge.`);
       render();
     });
 
@@ -144,8 +148,7 @@
         return;
       }
       const value = buffer.shift();
-      status.textContent = `Read ${value} on the clock edge.`;
-      recordEvent(`READ   ${value}  -> depth ${buffer.length}/${capacity}`);
+      announce(`Read ${value} on the clock edge.`);
       render();
     });
 
