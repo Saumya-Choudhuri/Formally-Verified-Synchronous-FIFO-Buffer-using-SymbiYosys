@@ -170,6 +170,11 @@
       if (event.key === 'Enter') writeButton.click();
     });
 
+    valueInput.addEventListener('input', () => {
+      status.classList.remove('error');
+      if (valueInput.value.length > 0) status.textContent = 'Value ready for the next clock edge.';
+    });
+
     render();
   </script>
 </body>
