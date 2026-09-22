@@ -114,6 +114,7 @@
       for (let index = 0; index < capacity; index += 1) {
         const slot = document.createElement('div');
         slot.className = 'slot';
+        slot.setAttribute('aria-label', `FIFO slot ${index + 1}`);
         slot.textContent = buffer[index] ?? `slot ${index + 1}`;
         if (buffer[index] !== undefined) slot.classList.add('filled');
         queue.append(slot);
