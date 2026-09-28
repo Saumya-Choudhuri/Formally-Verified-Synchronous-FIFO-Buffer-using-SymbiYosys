@@ -111,6 +111,10 @@
       status.textContent = message;
     }
 
+    function clearWarning() {
+      status.classList.remove('error');
+    }
+
     function render() {
       queue.replaceChildren();
       for (let index = 0; index < capacity; index += 1) {
@@ -175,7 +179,7 @@
     });
 
     valueInput.addEventListener('input', () => {
-      status.classList.remove('error');
+      clearWarning();
       if (valueInput.value.length > 0) status.textContent = 'Value ready for the next clock edge.';
     });
 
