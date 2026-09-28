@@ -57,6 +57,7 @@
     .events { display: grid; gap: 6px; margin: 20px 0 0; padding: 0; list-style: none; color: var(--muted); font: 0.78rem/1.4 Arial, sans-serif; }
     .events li { border-top: 1px solid var(--line); padding-top: 6px; }
     .updates { margin-top: 36px; color: var(--muted); font: 0.75rem Arial, sans-serif; }
+    .updates strong { color: var(--accent-strong); font-weight: 400; }
     @media (max-width: 720px) { main { width: min(100% - 28px, 560px); padding: 32px 0; } .workspace { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -86,7 +87,7 @@
         <ol class="events" id="events" aria-label="Recent clock events"></ol>
       </aside>
     </section>
-    <p class="updates">Synchronous FIFO reference interface · wr_en, rd_en, full, empty</p>
+    <p class="updates"><strong>Synchronous FIFO reference interface</strong> · wr_en, rd_en, full, empty</p>
   </main>
   <noscript>This simulator needs JavaScript enabled to operate the clock controls.</noscript>
   <script>
