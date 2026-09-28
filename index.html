@@ -41,6 +41,7 @@
     .slot::before { content: attr(aria-label); position: absolute; margin-top: -64px; font-size: 0.65rem; font-weight: 400; color: var(--muted); }
     .slot.filled { border-style: solid; border-color: var(--accent); background: var(--panel-soft); color: var(--accent-strong); }
     .slot:first-child.filled { box-shadow: inset 0 -3px 0 var(--accent); }
+    .slot:not(.filled)::after { content: 'available'; position: absolute; bottom: 8px; font-size: 0.65rem; font-weight: 400; color: var(--muted); }
     .queue-note { margin: 16px 0 0; color: var(--muted); font-size: 0.92rem; }
     .controls { display: grid; gap: 14px; }
     label { color: var(--muted); font: 0.8rem Arial, sans-serif; }
