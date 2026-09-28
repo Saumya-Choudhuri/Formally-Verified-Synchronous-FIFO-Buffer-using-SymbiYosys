@@ -102,6 +102,7 @@
     const resetButton = document.querySelector('#reset');
     const events = document.querySelector('#events');
     const eventHistory = [];
+    const initialStatus = status.textContent;
 
     function announce(message) {
       status.classList.remove('error');
@@ -116,6 +117,7 @@
 
     function clearWarning() {
       status.classList.remove('error');
+      if (valueInput.value.length === 0) status.textContent = initialStatus;
     }
 
     function render() {
