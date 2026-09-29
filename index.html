@@ -136,7 +136,8 @@
       }
       writeButton.disabled = buffer.length === capacity;
       readButton.disabled = buffer.length === 0;
-      depth.textContent = `Depth: ${buffer.length} / ${capacity}`;
+      const state = buffer.length === 0 ? 'empty' : buffer.length === capacity ? 'full' : 'active';
+      depth.textContent = `Depth: ${buffer.length} / ${capacity} · ${state}`;
     }
 
     function recordEvent(message) {
