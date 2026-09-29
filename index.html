@@ -87,7 +87,7 @@
           <button id="reset" class="secondary" type="button" aria-label="Reset the FIFO buffer">Reset buffer</button>
         </div>
         <p class="status" id="status" role="status">Ready for a clock edge.</p>
-        <ol class="events" id="events" aria-label="Recent clock events"></ol>
+        <ol class="events" id="events" aria-live="polite" aria-label="Recent clock events"></ol>
       </aside>
     </section>
     <p class="updates"><strong>Synchronous FIFO reference interface</strong> · wr_en, rd_en, full, empty</p>
