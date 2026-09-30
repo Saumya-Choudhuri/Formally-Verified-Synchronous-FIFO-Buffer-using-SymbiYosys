@@ -185,6 +185,7 @@
       valueInput.value = '';
       announce('Buffer reset on the clock edge.');
       render();
+      valueInput.focus();
     });
 
     valueInput.addEventListener('keydown', (event) => {
