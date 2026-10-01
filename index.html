@@ -90,7 +90,7 @@
           <button id="read" class="secondary" type="button" aria-label="Read the oldest item on the next clock edge">Read on next clock</button>
           <button id="reset" class="secondary" type="button" aria-label="Reset the FIFO buffer">Reset buffer</button>
         </div>
-        <p class="status" id="status" role="status">Ready for a clock edge.</p>
+        <p class="status" id="status" role="status" aria-atomic="true">Ready for a clock edge.</p>
         <ol class="events" id="events" aria-live="polite" aria-label="Recent clock events"></ol>
       </aside>
     </section>
